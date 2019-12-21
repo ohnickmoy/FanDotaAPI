@@ -1,0 +1,2 @@
+class TeamFollower < ApplicationRecord
+end
