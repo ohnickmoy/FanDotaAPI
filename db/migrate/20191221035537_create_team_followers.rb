@@ -6,5 +6,9 @@ class CreateTeamFollowers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    
+    add_index :team_followers, :team_id
+    add_index :team_followers, :user_id
+    add_index :team_followers, [:team_id, :user_id], unique: true
   end
 end

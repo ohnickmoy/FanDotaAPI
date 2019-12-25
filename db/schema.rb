@@ -20,13 +20,17 @@ ActiveRecord::Schema.define(version: 2019_12_21_040131) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id", "user_id"], name: "index_team_followers_on_team_id_and_user_id", unique: true
+    t.index ["team_id"], name: "index_team_followers_on_team_id"
+    t.index ["user_id"], name: "index_team_followers_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
+    t.string "tag"
     t.string "logo_url"
     t.integer "wins"
-    t.integer "loses"
+    t.integer "losses"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
