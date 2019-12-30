@@ -16,11 +16,9 @@ class Api::V1::TeamFollowersController < ApplicationController
     end
 
     def unfollow
-        #byebug
         teamFollower = TeamFollower.find_by(team_id: params[:team_id], user_id: params[:user_id])
         teamFollower.destroy
         render json: TeamFollowerSerializer.new(teamFollower)
-        #byebug
 
     end
 end
