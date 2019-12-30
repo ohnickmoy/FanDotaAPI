@@ -8,4 +8,25 @@ class Api::V1::TeamFollowersController < ApplicationController
         teamFollower = Team.find(params[:id])
         render json: TeamFollowerSerializer.new(teamFollower)
     end
+
+    def create
+        teamFollower = TeamFollower.new(tf_params)
+        teamFollower.save
+        render json: TeamFollowerSerializer.new(teamFollower, include: [:team])
+    end
+
+    def unfollow
+        #byebug
+        teamFollower = TeamFollower.find_by(team_id: params[:team_id], user_id: params[:user_id])
+        teamFollower.destroy
+        render json: TeamFollowerSerializer.new(teamFollower)
+        #byebug
+
+    end
+end
+
+private 
+
+def tf_params
+    params.require(:team_follower).permit(:team_id, :user_id)
 end
