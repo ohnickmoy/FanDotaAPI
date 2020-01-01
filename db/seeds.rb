@@ -19,6 +19,9 @@ puts "Creating some teams"
 
 t1 = Team.create(name: "Evil Geniuses", tag: 'EG', logo_url: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/39.png", wins: 1035, losses: 620)
 t2 = Team.create(name: "OG", tag: 'OG', logo_url: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/2586976.png", wins: 538, losses: 301)
+t3 = Team.create(name: "Vici Gaming", tag: 'VG', logo_url: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/726228.png", wins: 1032, losses: 678)
+t4 = Team.create(name: "Team Secret", tag: 'Secret', logo_url: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/1838315.png", wins: 717, losses: 359)
+
 
 puts "Teams Created"
 
