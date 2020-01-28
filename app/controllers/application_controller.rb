@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     def decode_token
-        JWT.decode(get_auth_header, 'password_please')[0]['user_id']
+        JWT.decode(get_auth_header, `#{ENV[JWT_KEY]}`)[0]['user_id']
     end
 
     def get_auth_header
