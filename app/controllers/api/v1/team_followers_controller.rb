@@ -10,6 +10,7 @@ class Api::V1::TeamFollowersController < ApplicationController
     end
 
     def create
+        # byebug
         teamFollower = TeamFollower.new(tf_params)
         teamFollower.save
         render json: TeamFollowerSerializer.new(teamFollower, include: [:team])
@@ -19,12 +20,11 @@ class Api::V1::TeamFollowersController < ApplicationController
         teamFollower = TeamFollower.find_by(team_id: params[:team_id], user_id: params[:user_id])
         teamFollower.destroy
         render json: TeamFollowerSerializer.new(teamFollower)
-
     end
-end
 
-private 
+    private 
 
-def tf_params
-    params.require(:team_follower).permit(:team_id, :user_id)
+    def tf_params
+        params.require(:team_follower).permit(:team_id, :user_id)
+    end
 end
