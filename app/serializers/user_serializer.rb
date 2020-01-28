@@ -4,6 +4,7 @@ class UserSerializer
   has_many :teams
 
   attribute :token do |object|
-    JWT.encode({user_id: object.id}, `#{ENV[JWT_KEY]}`)
+    key = ENV["JWT_KEY"]
+    JWT.encode({user_id: object.id}, key)
   end
 end

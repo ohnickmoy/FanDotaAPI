@@ -1,7 +1,9 @@
 class Api::V1::AuthController < ApplicationController
     def login
         user = User.find_by(username: params[:username])
-        token = JWT.encode({user_id: user.id}, `#{ENV[JWT_KEY]}`)
+        # byebug
+        key = ENV["JWT_KEY"]
+        token = JWT.encode({user_id: user.id}, key)
         if user && user.authenticate(params[:password])
             # byebug
             render json: UserSerializer.new(user, include:[:teams])

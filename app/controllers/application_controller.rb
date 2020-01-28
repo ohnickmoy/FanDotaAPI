@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
     def decode_token
-        JWT.decode(get_auth_header, `#{ENV[JWT_KEY]}`)[0]['user_id']
+        key = ENV["JWT_KEY"]
+        JWT.decode(get_auth_header, key)[0]['user_id']
     end
 
     def get_auth_header
